@@ -26,7 +26,7 @@ func unzipManifest(apk string) (data []byte, err error) {
 	defer cf.Close()
 
 	var xmldata []byte
-	manifest := fmt.Sprint("tmp_%d", time.Now().UnixNano())
+	manifest := fmt.Sprintf("tmp_%d", time.Now().UnixNano())
 	var reader io.ReadCloser
 
 	for _, f := range cf.File {
