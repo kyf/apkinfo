@@ -22,10 +22,10 @@ type Application struct {
 }
 
 type Apkinfo struct {
-	VersionCode int         `xml:"versionCode,attr"`
-	VersionName string      `xml:"versionName,attr"`
-	Package     string      `xml:"package,attr"`
-	App         Application `xml:"application"`
+	VersionCode int          `xml:"versionCode,attr"`
+	VersionName string       `xml:"versionName,attr"`
+	Package     string       `xml:"package,attr"`
+	App         *Application `xml:"application"`
 }
 
 func unzipManifest(apk string) (data []byte, err error) {
