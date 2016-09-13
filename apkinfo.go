@@ -12,10 +12,20 @@ import (
 	"time"
 )
 
+type MetaData struct {
+	Name  string `xml:"name,attr"`
+	Value string `xml:"value,attr"`
+}
+
+type Application struct {
+	Meta []MetaData `xml:"meta-data"`
+}
+
 type Apkinfo struct {
-	VersionCode int    `xml:"versionCode,attr"`
-	VersionName string `xml:"versionName,attr"`
-	Package     string `xml:"package,attr"`
+	VersionCode int         `xml:"versionCode,attr"`
+	VersionName string      `xml:"versionName,attr"`
+	Package     string      `xml:"package,attr"`
+	App         Application `xml:"application"`
 }
 
 func unzipManifest(apk string) (data []byte, err error) {

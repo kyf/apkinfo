@@ -13,3 +13,12 @@ func TestGetApkInfo(t *testing.T) {
 	}
 	log.Print(apk)
 }
+
+func TestGetApkInfo1(t *testing.T) {
+	file := "./liurenyou-sem001.apk"
+	apk, err := GetApkInfo(file)
+	if err != nil {
+		t.Error(err)
+	}
+	log.Print(apk)
+}
