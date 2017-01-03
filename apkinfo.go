@@ -28,7 +28,7 @@ type Apkinfo struct {
 	App         *Application `xml:"application"`
 }
 
-func unzipManifest(apk string) (data []byte, err error) {
+func unzipManifest(apk, axmlDir string) (data []byte, err error) {
 	cf, err := zip.OpenReader(apk)
 	if err != nil {
 		return
@@ -64,14 +64,14 @@ func unzipManifest(apk string) (data []byte, err error) {
 		os.Remove(manifest)
 	}()
 
-	cmd := exec.Command("java", "-jar", "AXMLPrinter2.jar", manifest)
+	cmd := exec.Command("java", "-jar", axmlDir+"/AXMLPrinter2.jar", manifest)
 	data, err = cmd.Output()
 	data = []byte(strings.Replace(string(data), "android:", "", -1))
 	return
 }
 
-func GetApkInfo(zipfile string) (*Apkinfo, error) {
-	xmldata, err := unzipManifest(zipfile)
+func GetApkInfo(zipfile, axmlDir string) (*Apkinfo, error) {
+	xmldata, err := unzipManifest(zipfile, axmlDir)
 	if err != nil {
 		return nil, err
 	}

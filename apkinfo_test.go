@@ -7,7 +7,7 @@ import (
 
 func TestGetApkInfo(t *testing.T) {
 	file := "./baidu.apk"
-	apk, err := GetApkInfo(file)
+	apk, err := GetApkInfo(file, ".")
 	if err != nil {
 		t.Error(err)
 	}
@@ -16,7 +16,7 @@ func TestGetApkInfo(t *testing.T) {
 
 func TestGetApkInfo1(t *testing.T) {
 	file := "./liurenyou-sem001.apk"
-	apk, err := GetApkInfo(file)
+	apk, err := GetApkInfo(file, ".")
 	if err != nil {
 		t.Error(err)
 	}
